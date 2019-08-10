@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+ Copyright 2019 Google Inc. All Rights Reserved.
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Real Modules with Rollup Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- If you need CSP, this is how you can configure it to work with the dynamic import polyfill -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' blob:"> -->
+
+  {% for module in modulepreload %}
+    {% if browserSupportsModulePreload -%}
+      <link rel="modulepreload" href="{{ module }}"></script>
+    {%- else -%}
+      <link rel="preload" as="script" crossorigin="anonymous" href="{{ module }}"></script>
+    {%- endif %}
+  {%- endfor %}
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #eee;
+      font: 1em/1.4 system-ui, sans-serif;
+      margin: 2em;
+    }
+    section, footer {
+      margin: 0 auto;
+      max-width: 100%;
+      width: 50em;
+    }
+    section {
+      background: #fff;
+      border-radius: 3px;
+      padding: 2em;
+    }
+    footer {
+      color: #666;
+      padding: 0 2em;
+    }
+    p {
+      margin: 1.5em 0;
+    }
+    pre, code {
+      font-family: Monaco, Menlo, monospace;
+    }
+    code, em {
+      color: #666;
+      font-size: .93em;
+    }
+    a {
+      color: hsl(210, 100%, 50%);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section id="app">
+      <noscript>
+        <marquee>This demo requires JavaScript to be enabled</marquee>
+      </noscript>
+    </section>
+    <footer>
+      <p>The source code for this demo can be found on GitHub at <a href="https://github.com/philipwalton/rollup-native-modules-boilerplate"> rollup-native-modules-boilerplate</a>. The technique for deploying the code is based on <a href="https://philipwalton.com/articles/using-native-javascript-modules-in-production-today/">Using Native JavaScript Modules in Production Today</a> by <a href="https://twitter.com/philwalton">@philwalton</a>.</p>
+    </footer>
+  </main>
+
+  <script type="module" src="{{ manifest.main }}"></script>
+  {% if ENV == 'production' %}
+    <script nomodule src="{{ manifest.nomodule }}"></script>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+  },
+  "parserOptions": {
+    "sourceType": "module",
+  },
+  "plugins": [
+    "react"
+  ],
+  "extends": [
+    "eslint:recommended", "google"
+  ],
+  "rules": {
+    "no-console": 0,
+    "require-jsdoc": 0,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "name": "rollup-native-modules-boilerplate",
+  "private": true,
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "eslint *.js src/**/*.mjs",
+    "build": "rollup -c && node clean.js",
+    "glitch": "git pull -s recursive -X theirs origin master && refresh",
+    "prestart": "if [ ! -d \"./public\" ]; then npm run build; fi",
+    "start": "node server.js",
+    "watch": "trap 'kill %1 && exit 0' SIGINT; node server.js & rollup -cw"
+  },
+  "config": {
+    "publicDir": "public"
+  },
+  "author": {
+    "name": "Philip Walton",
+    "email": "philip@philipwalton.com",
+    "url": "http://philipwalton.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/philipwalton/rollup-js-modules-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/philipwalton/rollup-js-modules-boilerplate/issues"
+  },
+  "keywords": [
+    "rollup",
+    "module",
+    "esm",
+    "import",
+    "dynamic"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-env": "^7.5.5",
+    "core-js": "^3.2.0",
+    "date-fns": "^2.0.0-beta.4",
+    "dynamic-import-polyfill": "^0.1.0",
+    "express": "^4.17.1",
+    "fs-extra": "^8.1.0",
+    "globby": "^10.0.1",
+    "highlight.js": "^9.15.9",
+    "lodash-es": "^4.17.15",
+    "moment": "^2.24.0",
+    "nunjucks": "^3.2.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "regenerator-runtime": "^0.13.3",
+    "rollup": "^1.19.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-terser": "^5.1.1",
+    "rxjs": "^6.5.2",
+    "ua-parser-js": "^0.7.20"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.1.0",
+    "eslint-config-google": "^0.13.0",
+    "eslint-plugin-react": "^7.14.3"
+  }
+}
