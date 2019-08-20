@@ -28,7 +28,7 @@ To run the app locally, [clone](https://help.github.com/en/articles/cloning-a-re
 npm start
 ```
 
-This will start a local server at `http://localhost:8080`, where you can view the app.
+This will start a local server at `http://localhost:3000`, where you can view the app.
 
 If you want to run the app _and_ have Rollup monitor the code for changes (and rebundle), you can run:
 
