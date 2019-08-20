@@ -69,12 +69,12 @@ export class App extends React.Component {
 
     return (<div class="App">
       <h2 className="App-heading">JavaScript Modules in Production Demo</h2>
-      <p>This demo uses real, ES2015 JavaScript modules loaded with module scripts and actual <code>import</code> statements. Everything you see in the intial render was done with static imports. You can see dynamic <code>import()</code> in action by clicking the button and running the code below.</p>
+      <p>This demo uses real, ES2015 JavaScript modules loaded with module scripts and <code>import</code> statements. Everything you see in the intial render is done with statically imported modules. To see dynamic <code>import()</code> in action, click the button below to run the following code:</p>
       <CodeBlock code={code} lang="javascript" />
       <p>
         <button className="Button" onClick={this.importAsyncDeps}>Run code &nbsp;&rarr;</button>
       </p>
-      <p>Running this code will dynamically <code>import()</code> the <code>AsyncComponent.mjs</code> module, as well as its dependencies (<code>lodash-es</code> and <code> rxjs</code>). After you run the code, notice how the list of modules below changes. <em>(View source or click the links below to see the module code.)</em></p>
+      <p>Running this code will dynamically <code>import()</code> the <code>AsyncComponent.mjs</code> module, as well as its dependencies (<code>lodash-es</code> and <code> rxjs</code>). After you run the code, notice how the list of modules below changes. <em>(View source or click links below to see the module code.)</em></p>
       <h3 className="App-subHeading">Loaded modules</h3>
       <ul>{this.state.modules.map(({timestamp, URL}) => {
         return (<li key={URL} className="App-module">
