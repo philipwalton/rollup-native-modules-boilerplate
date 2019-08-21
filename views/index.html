@@ -22,7 +22,7 @@
   <!-- If you need CSP, this is how you can configure it to work with the dynamic import polyfill -->
   <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' blob:"> -->
 
-  {% for module in modulepreload %}
+  {% for module in modulepreload.main %}
     {% if browserSupportsModulePreload -%}
       <link rel="modulepreload" href="{{ module }}"></script>
     {%- else -%}
