@@ -24,9 +24,9 @@
 
   {% for module in modulepreload.main %}
     {% if browserSupportsModulePreload -%}
-      <link rel="modulepreload" href="{{ module }}"></script>
+      <link rel="modulepreload" href="{{ module }}"/>
     {%- else -%}
-      <link rel="preload" as="script" crossorigin="anonymous" href="{{ module }}"></script>
+      <link rel="preload" as="script" crossorigin="anonymous" href="{{ module }}"/>
     {%- endif %}
   {%- endfor %}
 
