@@ -37,12 +37,15 @@ const manifest = {};
  * to point to the currect URL.
  * @return {Object}
  */
-function manifestPlugin() {
+function manifestPlugin(build) {
   return {
     name: 'manifest',
     generateBundle(options, bundle) {
+      debugger;
+      manifest[build] = {};
+
       for (const [name, assetInfo] of Object.entries(bundle)) {
-        manifest[assetInfo.name] = name;
+        manifest[build][assetInfo.name] = name;
       }
 
       this.emitFile({
@@ -110,7 +113,6 @@ function basePlugins({nomodule = false} = {}) {
     }),
     postcss(),
     replace({'process.env.NODE_ENV': JSON.stringify('production')}),
-    manifestPlugin(),
   ];
   // Only add minification in production and when not running on Glitch.
   if (process.env.NODE_ENV === 'production' && !process.env.GLITCH) {
@@ -135,6 +137,7 @@ const moduleConfig = {
   },
   plugins: [
     ...basePlugins(),
+    manifestPlugin('module'),
     modulepreloadPlugin(),
   ],
   manualChunks(id) {
@@ -170,15 +173,17 @@ const moduleConfig = {
 // Legacy config for <script nomodule>
 const nomoduleConfig = {
   input: {
-    'nomodule': 'src/main-nomodule.mjs',
+    'main': 'src/main-nomodule.mjs',
   },
   output: {
     dir: pkg.config.publicDir,
-    format: 'iife',
+    format: 'amd',
     entryFileNames: '[name]-[hash].js',
   },
-  plugins: basePlugins({nomodule: true}),
-  inlineDynamicImports: true,
+  plugins: [
+    ...basePlugins({nomodule: true}),
+    manifestPlugin('nomodule'),
+  ],
   watch: {
     clearScreen: false,
   },
