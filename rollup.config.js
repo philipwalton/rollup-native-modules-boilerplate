@@ -145,15 +145,15 @@ const moduleConfig = {
       const name = directories[directories.lastIndexOf('node_modules') + 1];
 
       // Group react dependencies into a common "react" chunk.
-      // NOTE: This isn't strictly necessary for this app, but it's include
-      // to show how it's done.
+      // NOTE: This isn't strictly necessary for this app, but it's included
+      // as an example to show how to manually group common dependencies.
       if (name.match(/^react/) || ['prop-types', 'scheduler'].includes(name)) {
         return 'react';
       }
 
       // Group `tslib` and `dynamic-import-polyfill` into the default bundle.
-      // NOTE: This isn't strictly necessary for this app, but it's include
-      // to show how it's done.
+      // NOTE: This isn't strictly necessary for this app, but it's included
+      // to show how to manually keep deps in the default chunk.
       if (name === 'tslib' || name === 'dynamic-import-polyfill') {
         return;
       }
