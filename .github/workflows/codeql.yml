@@ -1,4 +1,4 @@
-# For most projects, this workflow file will not need changing; you simply need
+[![CodeQL](https://github.com/Nasmaemad/rollup-native-modules-boilerplate/actions/workflows/codeql.yml/badge.svg)](https://github.com/Nasmaemad/rollup-native-modules-boilerplate/actions/workflows/codeql.yml# For most projects, this workflow file will not need changing; you simply need
 # to commit it to your repository.
 #
 # You may wish to alter this file to override the set of languages analyzed,
